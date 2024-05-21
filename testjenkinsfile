@@ -4,6 +4,10 @@ pipeline {
         stage('install dependencies'){
             agent{docker { image 'node:14'}}
             steps{
+                sh 'cat /etc/os-release'
+                sh 'exit'
+                sh 'app update'
+                sh 'app install sudo -y'
                 sh 'npm install'
                 sh 'sudo chown -R 995:993 "/.npm"'
             }
